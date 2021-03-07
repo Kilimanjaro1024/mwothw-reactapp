@@ -1,4 +1,17 @@
 import React from "react";
+import styled from "styled-components";
+
+const SearchBtns = styled.div`
+    background-color: green;
+    display: flex;
+    justify-content space-around;
+`;
+
+const SearchForm = styled.form`
+    background-color: green;
+    display: flex;
+    justify-content space-around;
+`;
 
 const SearchNav = (props) => {
   const [search, setSearch] = React.useState("");
@@ -23,19 +36,19 @@ const SearchNav = (props) => {
 
   if (search === "") {
     return (
-      <div>
+      <SearchBtns>
         <h1 onClick={() => setSearch("Post")}>Posts</h1>
         <h1 onClick={() => setSearch("User")}>Users</h1>
-      </div>
+      </SearchBtns>
     );
   } else if (search === "Post") {
     return (
       <div>
-        <div>
-          <h1 onClick={() => setSearch("Post")}>Posts</h1>
+        <SearchBtns>
+          <h1 onClick={() => {setSearch("")}}>Posts</h1>
           <h1 onClick={() => setSearch("User")}>Users</h1>
-        </div>
-        <form onSubmit={() => {}}>
+        </SearchBtns>
+        <SearchForm onSubmit={() => {}}>
           <select name="topic" onChange={handleTopicChange}>
             <option value=""></option>
             <option value="Topic 1">Topic 1</option>
@@ -44,20 +57,20 @@ const SearchNav = (props) => {
           </select>
           <input type="text" name="tag" onChange={handleChange} />
           <input type="submit" value="submit" />
-        </form>
+        </SearchForm>
       </div>
     );
   } else if (search === "User") {
     return (
       <div>
-        <div>
+        <SearchBtns>
           <h1 onClick={() => setSearch("Post")}>Posts</h1>
-          <h1 onClick={() => setSearch("User")}>Users</h1>
-        </div>
-        <form onSubmit={() => {}}>
+          <h1 onClick={() => setSearch("")}>Users</h1>
+        </SearchBtns>
+        <SearchForm onSubmit={() => {}}>
           <input type="text" name="tag" onChange={handleChange} />
           <input type="submit" value="submit" />
-        </form>
+        </SearchForm>
       </div>
     );
   }

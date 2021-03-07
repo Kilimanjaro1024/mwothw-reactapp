@@ -1,22 +1,48 @@
-import React from 'react'
-import '../Header.css'
+import React from "react";
+import "../Header.css";
 
-const Header = props => {
-    
+import styled from "styled-components";
 
-    return (
-        <div className="header">
-            <div className="profile-btn" onClick={() => props.history.push("/profile")}>
-                <img src="https://i.imgur.com/INnsE9J.png" alt="profile"/>
-                <h3>Username</h3>
-            </div>
-            <div className="hmbgr-div">
-                <img className="hmbgr" src="https://static.thenounproject.com/png/198756-200.png" alt="profile"/>
-            </div>
+const Container = styled.div`
+  background-color: blue;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
 
-        </div>
-    )
+const ProfileBtn = styled.div`
+  display: flex;
+`;
 
-}
+const Hmbgr = styled.img`
+  width: 50px;
+  height: 50px;
+`;
 
-export default Header
+const Header = (props) => {
+  console.log(props.setVisable)
+  const setNav = () => {
+    props.setVisable(!props.visable)
+  }
+
+  return (
+    <Container>
+      <ProfileBtn
+        className="profile-btn"
+        onClick={() => props.history.push("/profile")}
+      >
+        <img src="https://i.imgur.com/INnsE9J.png" alt="profile" />
+        <h3>Username</h3>
+      </ProfileBtn>
+      <div className="hmbgr-div">
+        <Hmbgr
+          src="https://static.thenounproject.com/png/198756-200.png"
+          alt="profile"
+          onClick = {() => setNav()}
+        />
+      </div>
+    </Container>
+  );
+};
+
+export default Header;

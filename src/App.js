@@ -15,6 +15,7 @@ import NewPostPage from "./pages/NewPostPage"
 function App() {
   const url = "http://localhost:3000";
   const [posts, setPosts] = useState([])
+  const [content, setContent] = React.useState("Posts")
 
   const likePost = post => {
     axios.post(
@@ -58,12 +59,12 @@ function App() {
         <Route
           exact
           path="/profile"
-          render={(rp) => <ProfilePage {...rp} url={url} likePost={likePost} posts={posts} setPosts={setPosts}/>}
+          render={(rp) => <ProfilePage {...rp} url={url} likePost={likePost} posts={posts} setPosts={setPosts} content={content} setContent={setContent}/>}
         />
         <Route
           exact
           path="/new_post"
-          render={(rp) => <NewPostPage {...rp} url={url} />}
+          render={(rp) => <NewPostPage {...rp} url={url} content={content} setContent={setContent}/>}
         />
         
       </Switch>

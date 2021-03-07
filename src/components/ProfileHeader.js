@@ -1,15 +1,19 @@
 import React from "react"
 import "../Header.css"
+import styled from "styled-components";
 
+const ProfileBtn = styled.div`
+  display: flex;
+`;
 
 const ProfileHeader = props => {
   return (
     <div className="header">
       <h3 onClick={() => props.history.push("/homepage")}>Back</h3>
-      <div className="profile-btn" onClick={() => props.history.push("/profile")}>
-        <img src="https://i.imgur.com/INnsE9J.png" alt="profile" />
+      <ProfileBtn onClick={() => props.history.push("/profile")}>
         <h3>Username</h3>
-      </div>
+        <img src="https://i.imgur.com/INnsE9J.png" alt="profile" />
+      </ProfileBtn>
     </div>
   )
 }

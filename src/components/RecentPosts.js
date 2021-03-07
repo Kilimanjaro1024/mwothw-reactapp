@@ -4,7 +4,6 @@ import axios from 'axios'
 import Post from "./Post"
 
 const RecentPosts = props => {
-
     const getRecentPosts = () => {
         axios.get(props.url + "/posts", {
             headers: {'authorization': 'bearer ' + sessionStorage.getItem('token')}
