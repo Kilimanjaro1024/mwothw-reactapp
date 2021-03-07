@@ -1,10 +1,9 @@
-import React from "react"
-import "../Header.css"
-import axios from "axios"
+import React from "react";
+import "../Header.css";
+import axios from "axios";
 
-const NewPost = props => {
-
-  const createPost = postData => {
+const NewPost = (props) => {
+  const createPost = (postData) => {
     axios
       .post(
         props.url + "/posts",
@@ -20,33 +19,34 @@ const NewPost = props => {
         }
       )
       .then(() => {
-        props.history.push("/homepage")
+        props.history.push("/homepage");
       })
-      .catch(error => {
-        console.log(error.response)
-      })
-  }
+      .catch((error) => {
+        console.log(error.response);
+      });
+  };
 
   const emptyLoginFormData = {
     title: "",
     topic: "",
     content: "",
-  }
+    likes: 0
+  };
 
-  const [formData, setFormData] = React.useState(emptyLoginFormData)
+  const [formData, setFormData] = React.useState(emptyLoginFormData);
 
-  const handleChange = event => {
+  const handleChange = (event) => {
     setFormData({
       ...formData,
       [event.target.name]: [event.target.value],
-    })
-  }
+    });
+  };
 
-  const handleSubmit = event => {
-    event.preventDefault() // Prevent Form from Refreshing
-    console.log(formData)
-    createPost(formData) // update passed down state from App.js with the form data
-  }
+  const handleSubmit = (event) => {
+    event.preventDefault(); // Prevent Form from Refreshing
+    console.log(formData);
+    createPost(formData); // update passed down state from App.js with the form data
+  };
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -64,6 +64,13 @@ const NewPost = props => {
           value={formData.topic}
           onChange={handleChange}
         />
+        {/* <h1>Tags</h1>
+        <input
+          type="text"
+          name="tags"
+          value={formData.content}
+          onChange={handleChange}
+        /> */}
         <h1>Content</h1>
         <input
           type="text"
@@ -74,7 +81,7 @@ const NewPost = props => {
         <input type="submit" value="submit" />
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default NewPost
+export default NewPost;

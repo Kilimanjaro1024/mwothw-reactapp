@@ -1,6 +1,15 @@
 import React from "react";
 
 const Post = (props) => {
+    const[state, setState]  =React.useState(true)
+
+    const handleClick = post => {
+        props.likePost(post)
+        setState(!state)
+
+    }
+
+    
   return (
     <div>
       {props.posts.map((post, index) => {
@@ -11,7 +20,7 @@ const Post = (props) => {
             </h1>
             <h1>{post.content}</h1>
             <h1>{post.likes}</h1>
-            <button onClick={() => props.likePost(post)}>like</button>
+            <button onClick={() => handleClick(post)}>like</button>
           </div>
         );
       })}

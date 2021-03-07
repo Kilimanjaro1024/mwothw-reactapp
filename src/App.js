@@ -19,13 +19,22 @@ function App() {
   const likePost = post => {
     axios.post(
       url + "/liked_posts",
-      { title: post.title, topic: post.topic, content: post.content },
+      { title: post.title, topic: post.topic, content: post.content, likes: post.likes + 1},
       {
         headers: {
           authorization: "bearer " + sessionStorage.getItem("token"),
         },
       }
     )
+    .then(axios.put(
+      url + "/posts/" + post.id,
+      {...post, likes: post.likes+= 1},
+      {
+        headers: {
+          authorization: "bearer " + sessionStorage.getItem("token"),
+        },
+      }
+    ))
   }
 
   return (
