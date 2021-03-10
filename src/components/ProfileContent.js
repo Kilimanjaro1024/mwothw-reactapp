@@ -1,32 +1,70 @@
-import React from 'react'
-import Profile from './Profile'
-import MyPosts from './MyPosts'
-import AccountInfo from "./AccountInfo"
+import React from "react";
+import Profile from "./Profile";
+import MyPosts from "./MyPosts";
+import AccountInfo from "./AccountInfo";
 import { Route, Switch, Link, Router } from "react-router-dom";
+import styled from "styled-components";
 
+const NewPostBtn = styled.div`
+  background-color: #418bc8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #13293D;
+  height: 15vh;
+  margin: 10px 0;
+  font-family: "RocknRoll One", sans-serif;
+  font-weight: 700;
+  font-size: 25px;
+  color: #13293D;
+  :hover {
+    background-color: #B1C5D3;
+  }
+`;
+
+const ContentContainer = styled.div`
+  margin: auto;
+  text-align: center;
+  @media (min-width: 768px) {
+    width: 50vw;
+  }
+`;
 
 const ProfileContent = (props) => {
-    
+  if (props.content === "Posts") {
+    return (
+      <ContentContainer>
+        <NewPostBtn
+          onClick={() => {
+            props.history.push("/new_post");
+          }}
+        >
+          New Post
+        </NewPostBtn>
+        <MyPosts
+          path="/profile/posts"
+          likePost={props.likePost}
+          url={props.url}
+          posts={props.posts}
+          setPosts={props.setPosts}
+        />
+      </ContentContainer>
+    );
+  } else if (props.content === "Liked") {
+    return (
+      <ContentContainer>
+        <MyPosts
+          path="/profile/liked"
+          likePost={props.likePost}
+          url={props.url}
+          posts={props.posts}
+          setPosts={props.setPosts}
+        />
+      </ContentContainer>
+    );
+  } else if (props.content === "Info") {
+    return <AccountInfo />;
+  }
+};
 
-    if(props.content === "Posts"){
-        return(
-            <div>
-                <Link to="/new">New Post</Link>
-                <MyPosts path="/profile/posts" likePost={props.likePost} url={props.url} posts={props.posts} setPosts={props.setPosts}/>
-            </div>
-        )
-    }
-    else if(props.content === "Liked"){
-        return(
-            <MyPosts path="/profile/liked" likePost={props.likePost} url={props.url} posts={props.posts} setPosts={props.setPosts}/>
-        )
-    }
-    else if(props.content === "Info"){
-        return(
-            <AccountInfo/>
-        )
-    }
-    
-}
-
-export default ProfileContent
+export default ProfileContent;

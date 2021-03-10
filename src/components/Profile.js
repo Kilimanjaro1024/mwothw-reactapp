@@ -8,7 +8,7 @@ const Profile = props => {
     <div>
       <ProfileHeader history={props.history}/>
       <ProfileNav content={props.content} setContent={props.setContent}/>
-      <ProfileContent content={props.content} likePost={props.likePost} url={props.url} posts={props.posts} setPosts={props.setPosts}/>
+      <ProfileContent content={props.content} likePost={props.likePost} url={props.url} posts={props.posts} setPosts={props.setPosts} history={props.history}/>
     </div>
   )
 }

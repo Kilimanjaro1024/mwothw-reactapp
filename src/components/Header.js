@@ -3,15 +3,33 @@ import "../Header.css";
 
 import styled from "styled-components";
 
+
+
 const Container = styled.div`
-  background-color: blue;
+  background-color: #2A628F;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 20px 5px;
 `;
 
 const ProfileBtn = styled.div`
   display: flex;
+  font-family: 'RocknRoll One', sans-serif;
+  h3 {
+    color: #0E1F2F;
+    padding:3px;
+    
+  }
+  :hover {
+    h3{
+      color: #B1C5D3;
+    }
+    text-shadow: 5px 5px 5px #0E1F2F; 
+    img {
+      box-shadow: 0px 0px  10px #B1C5D3;
+    }
+  }
 `;
 
 const Hmbgr = styled.img`
@@ -20,9 +38,12 @@ const Hmbgr = styled.img`
 `;
 
 const Header = (props) => {
+
+  
   console.log(props.setVisable)
   const setNav = () => {
     props.setVisable(!props.visable)
+    console.log(props.visable)
   }
 
   return (

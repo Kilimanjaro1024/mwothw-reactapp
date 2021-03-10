@@ -4,7 +4,7 @@ import Register from "../components/Register"
 const RegisterPage = props => {
     return (
         <div>
-            <Register/>
+            <Register history={props.history}/>
         </div>
     )
 }

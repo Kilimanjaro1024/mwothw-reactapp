@@ -1,6 +1,25 @@
 import React from "react";
 import "../Header.css";
 import axios from "axios";
+import styled from "styled-components";
+
+const PostForm = styled.form``;
+
+const ContentContainer = styled.div`
+  display: flex;
+  text-align: left;
+  margin: auto;
+  width: 50vw;
+`;
+const TitleTopicTags = styled.div`
+  display: flex;
+  text-align: left;
+  align-items: center;
+  p {
+    
+    margin: 0;
+  }
+`;
 
 const NewPost = (props) => {
   const createPost = (postData) => {
@@ -30,7 +49,7 @@ const NewPost = (props) => {
     title: "",
     topic: "",
     content: "",
-    likes: 0
+    likes: 0,
   };
 
   const [formData, setFormData] = React.useState(emptyLoginFormData);
@@ -48,22 +67,25 @@ const NewPost = (props) => {
     createPost(formData); // update passed down state from App.js with the form data
   };
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <h1>Title</h1>
-        <input
-          type="text"
-          name="title"
-          value={formData.title}
-          onChange={handleChange}
-        />
-        <h1>Topic</h1>
-        <input
-          type="text"
-          name="topic"
-          value={formData.topic}
-          onChange={handleChange}
-        />
+    <ContentContainer>
+      <PostForm onSubmit={handleSubmit}>
+        <TitleTopicTags>
+          <p>Title</p>
+          <input
+            type="text"
+            name="title"
+            value={formData.title}
+            onChange={handleChange}
+          />
+          <p>Topic</p>
+          <select name="topic" value={formData.topic} onChange={handleChange}>
+            <option>Other</option>
+            <option>Gaming</option>
+            <option>Sports</option>
+            <option>Reading</option>
+            <option>Cleaning</option>
+          </select>
+        </TitleTopicTags>
         {/* <h1>Tags</h1>
         <input
           type="text"
@@ -72,15 +94,18 @@ const NewPost = (props) => {
           onChange={handleChange}
         /> */}
         <h1>Content</h1>
-        <input
+        <textarea
+          cols="120"
+          rows="20"
           type="text"
           name="content"
           value={formData.content}
           onChange={handleChange}
         />
+        <br />
         <input type="submit" value="submit" />
-      </form>
-    </div>
+      </PostForm>
+    </ContentContainer>
   );
 };
 

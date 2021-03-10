@@ -3,6 +3,8 @@ import axios from "axios"
 
 import Post from "./Post"
 
+
+
 const MyPosts = props => {
 
   const getMyPosts = () => {

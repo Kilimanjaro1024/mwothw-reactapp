@@ -16,6 +16,21 @@ function App() {
   const url = "http://localhost:3000";
   const [posts, setPosts] = useState([])
   const [content, setContent] = React.useState("Posts")
+  const [user, setUser] = React.useState([])
+
+  const getUser = () => {
+    axios.get(
+      url + "/users", {
+        headers: {
+          authorization: "bearer " + sessionStorage.getItem("token"),
+        },
+      }
+    )
+    .then(data => {
+      console.log(data)
+      setUser(data.username)
+    })
+  }
 
   const likePost = post => {
     axios.post(
@@ -38,6 +53,8 @@ function App() {
     ))
   }
 
+  
+
   return (
     <div className="App">
       <Switch>
@@ -54,7 +71,7 @@ function App() {
         <Route
           exact
           path="/homepage"
-          render={(rp) => <Homepage {...rp} url={url} likePost={likePost} posts={posts} setPosts={setPosts}/>}
+          render={(rp) => <Homepage {...rp} url={url} likePost={likePost} posts={posts} setPosts={setPosts} getUser={getUser}/>}
         />
         <Route
           exact

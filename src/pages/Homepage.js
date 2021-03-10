@@ -1,38 +1,99 @@
-import React, { useState } from "react"
+import React, { useState } from "react";
 import { Route, Switch, Link, Router } from "react-router-dom";
-import styled from 'styled-components'
+import styled from "styled-components";
 
-import SearchNav from "../components/SearchNav"
-import Header from "../components/Header"
-import RecentPosts from "../components/RecentPosts"
+import SearchNav from "../components/SearchNav";
+import Header from "../components/Header";
+import RecentPosts from "../components/RecentPosts";
 
-const NewPostBtn = styled.button`
-    width: 100vw;
-    height: 10vh;
+const PageContainer = styled.div`
+  background-color: #bfdaee;
 `;
 
-const Homepage = props => {
-    const [visible, setVisable] = useState(false)
+const NewPostBtn = styled.div`
+  background-color: #418bc8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #13293D;
+  height: 15vh;
+  margin: 10px 0;
+  font-family: "RocknRoll One", sans-serif;
+  font-weight: 700;
+  font-size: 25px;
+  color: #13293D;
+  :hover {
+    background-color: #B1C5D3;
+  }
+`;
 
-    if(visible){
-        return (
-            <div>
-                <Header history={props.history} setVisable={setVisable} visable={visible}/>
-                <SearchNav/>
-                <NewPostBtn onClick={() => {props.history.push("/new_post")}}>New Post</NewPostBtn>
-                <RecentPosts url={props.url} likePost={props.likePost} posts={props.posts} setPosts={props.setPosts}/>
-            </div>
-        )
-    }
-    else {
-        return (
-            <div>
-                <Header history={props.history} setVisable={setVisable} visable={visible}/>
-                <NewPostBtn onClick={() => {props.history.push("/new_post")}}>New Post</NewPostBtn>
-                <RecentPosts url={props.url} likePost={props.likePost} posts={props.posts} setPosts={props.setPosts}/>
-            </div>
-        )
-    }
-} 
+const ContentContainer = styled.div`
+  margin: auto;
+  text-align: center;
+  // background-color: white;
+  @media (min-width: 768px) {
+    width: 50vw;
+  }
+`;
 
-export default Homepage
+const Homepage = (props) => {
+  const [visible, setVisable] = useState(false);
+  // React.useEffect(() => {
+  //   props.getUser()
+  // }, [])
+
+  if (visible) {
+    return (
+      <PageContainer>
+        <Header
+          history={props.history}
+          setVisable={setVisable}
+          visable={visible}
+        />
+        <SearchNav url={props.url} />
+        <ContentContainer>
+          <NewPostBtn
+            onClick={() => {
+              props.history.push("/new_post");
+            }}
+          >
+            New Post
+          </NewPostBtn>
+          <RecentPosts
+            url={props.url}
+            likePost={props.likePost}
+            posts={props.posts}
+            setPosts={props.setPosts}
+          />
+        </ContentContainer>
+      </PageContainer>
+    );
+  } else {
+    return (
+      <PageContainer>
+        <Header
+          history={props.history}
+          setVisable={setVisable}
+          visable={visible}
+        />
+        <ContentContainer>
+          <NewPostBtn
+            onClick={() => {
+              props.history.push("/new_post");
+            }}
+          >
+            New Post
+          </NewPostBtn>
+          <RecentPosts
+            url={props.url}
+            likePost={props.likePost}
+            posts={props.posts}
+            setPosts={props.setPosts}
+          />
+        </ContentContainer>
+      </PageContainer>
+    );
+  }
+};
+
+export default Homepage;

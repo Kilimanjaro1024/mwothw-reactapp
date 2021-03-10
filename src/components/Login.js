@@ -1,7 +1,15 @@
 import React from "react"
 import axios from "axios"
 import { Route, Switch, Link, Router } from "react-router-dom";
-import history from "../history"
+
+import styled from "styled-components";
+
+const Container = styled.div`
+  background-color: blue;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
 
 
 const Login = props => {
@@ -49,6 +57,10 @@ const Login = props => {
 
   return (
     <div>
+      <Container>
+        <h3 onClick={() => props.history.push("/")}>Back</h3>
+      </Container>
+    <div>
       <h1>Login</h1>
       <h2>Username:</h2>
       <form onSubmit={handleSubmit}>
@@ -65,9 +77,11 @@ const Login = props => {
           value={formData.password}
           onChange={handleChange}
         />
+        <br/>
         <input type="submit" value="submit" />
       </form>
        <Link to="/register/">Register</Link>
+    </div>
     </div>
   )
 }
