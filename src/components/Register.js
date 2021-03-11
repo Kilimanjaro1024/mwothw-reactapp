@@ -102,7 +102,10 @@ const Register = (props) => {
     event.preventDefault(); // Prevent Form from Refreshing
     console.log(formData);
     handleRegister(formData); // update passed down state from App.js with the form data
-    props.history.push("/");
+    if(formData.password !== "")
+    {
+      props.history.push("/");
+    }
   };
 
   return (

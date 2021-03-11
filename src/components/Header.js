@@ -53,6 +53,7 @@ const Header = (props) => {
         <img src={sessionStorage.getItem("picture")} alt="profile" style={{height: "60px"}, {width: "66px"}}/>
         <h3>{sessionStorage.getItem("user").toUpperCase()}</h3>
       </ProfileBtn>
+      
       <div className="hmbgr-div">
         <Hmbgr
           src="https://static.thenounproject.com/png/198756-200.png"

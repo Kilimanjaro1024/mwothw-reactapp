@@ -8,6 +8,7 @@ import RecentPosts from "../components/RecentPosts";
 
 const PageContainer = styled.div`
   background-color: #bfdaee;
+  height: 100vh;
 `;
 
 const NewPostBtn = styled.div`

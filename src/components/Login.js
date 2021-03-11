@@ -10,10 +10,8 @@ const PageContainer = styled.div`
 
 const Container = styled.div`
   background-color: #2a628f;
-  // display: flex;
-  // // justify-content: space-between;
-  // align-items: center;
   padding: 10px 5px;
+  font-family: 'RocknRoll One', sans-serif;
 `;
 
 const LoginDiv = styled.div`
@@ -94,7 +92,7 @@ const Login = (props) => {
   return (
     <PageContainer>
       <Container>
-        <h1>Title</h1>
+        <h1>My Way or The Highway</h1>
       </Container>
       <LoginDiv>
         <h1>Login</h1>
