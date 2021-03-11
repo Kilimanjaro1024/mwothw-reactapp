@@ -10,11 +10,12 @@ const PageContainer = styled.div`
 `;
 
 const Profile = props => {
+  console.log(props.user)
   return (
     <PageContainer>
-      <ProfileHeader history={props.history}/>
+      <ProfileHeader history={props.history} user={props.user}/>
       <ProfileNav content={props.content} setContent={props.setContent}/>
-      <ProfileContent content={props.content} likePost={props.likePost} url={props.url} posts={props.posts} setPosts={props.setPosts} history={props.history}/>
+      <ProfileContent content={props.content} likePost={props.likePost} url={props.url} posts={props.posts} setPosts={props.setPosts} history={props.history} user={props.user}/>
     </PageContainer>
   )
 }

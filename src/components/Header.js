@@ -38,8 +38,6 @@ const Hmbgr = styled.img`
 `;
 
 const Header = (props) => {
-
-  console.log(props.user)
   console.log(props.setVisable)
   const setNav = () => {
     props.setVisable(!props.visable)
@@ -52,8 +50,8 @@ const Header = (props) => {
         className="profile-btn"
         onClick={() => props.history.push("/profile")}
       >
-        <img src="https://i.imgur.com/INnsE9J.png" alt="profile" />
-        <h3>{props.user.user.username.toUpperCase()}</h3>
+        <img src={sessionStorage.getItem("picture")} alt="profile" style={{height: "60px"}, {width: "66px"}}/>
+        <h3>{sessionStorage.getItem("user").toUpperCase()}</h3>
       </ProfileBtn>
       <div className="hmbgr-div">
         <Hmbgr

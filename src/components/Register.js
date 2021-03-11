@@ -95,13 +95,14 @@ const Register = (props) => {
         [event.target.name]: [event.target.value],
       });
     }
-    // console.log(event.target.value)
+    
   };
 
   const handleSubmit = (event) => {
     event.preventDefault(); // Prevent Form from Refreshing
     console.log(formData);
     handleRegister(formData); // update passed down state from App.js with the form data
+    props.history.push("/");
   };
 
   return (

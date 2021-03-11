@@ -10,7 +10,7 @@ const PageContainer = styled.div`
 const ProfilePage = props => {
     return (
         <PageContainer>
-            <Profile url={props.url} history={props.history} likePost={props.likePost} posts={props.posts} setPosts={props.setPosts} content={props.content} setContent={props.setContent}/>
+            <Profile url={props.url} history={props.history} likePost={props.likePost} posts={props.posts} setPosts={props.setPosts} content={props.content} setContent={props.setContent} user={props.user}/>
         </PageContainer>
     )
 }

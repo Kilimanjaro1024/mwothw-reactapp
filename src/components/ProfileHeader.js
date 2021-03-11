@@ -30,12 +30,13 @@ const Container = styled.div`
 `;
 
 const ProfileHeader = props => {
+  console.log(props.user)
   return (
     <Container>
       <h3 onClick={() => props.history.push("/homepage")}>Back</h3>
       <ProfileBtn onClick={() => props.history.push("/profile")}>
-        <h3>Username</h3>
-        <img src="https://i.imgur.com/INnsE9J.png" alt="profile" />
+        <h3>{sessionStorage.getItem("user").toUpperCase()}</h3>
+        <img src={sessionStorage.getItem("picture")} alt="profile" style={{height: "60px"}, {width: "66px"}}/>
       </ProfileBtn>
     </Container>
   )

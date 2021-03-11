@@ -53,6 +53,10 @@ const Login = (props) => {
       .then((data) => {
         console.log(data.data)
         props.setUser(data.data)
+        sessionStorage.setItem("user", data.data.user.username)
+        sessionStorage.setItem("id", data.data.user.id)
+        sessionStorage.setItem("picture", data.data.user.picture)
+        sessionStorage.setItem("email", data.data.user.email)
         sessionStorage.setItem("token", data.data.token);
       })
       .then(() => {

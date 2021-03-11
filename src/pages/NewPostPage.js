@@ -11,7 +11,7 @@ const ContentContainer = styled.div`
 const NewPostPage = (props) => {
   return (
     <ContentContainer>
-      <ProfileHeader history={props.history}/>
+      <ProfileHeader history={props.history} user={props.user}/>
       <NewPost history={props.history} url={props.url} />
     </ContentContainer>
   );

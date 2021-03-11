@@ -30,40 +30,53 @@ const ContentContainer = styled.div`
   }
 `;
 
+const PageContainer = styled.div`
+  background-color: #bfdaee;
+`;
+
 const ProfileContent = (props) => {
+  console.log(props.user)
   if (props.content === "Posts") {
     return (
-      <ContentContainer>
-        <NewPostBtn
-          onClick={() => {
-            props.history.push("/new_post");
-          }}
-        >
-          New Post
-        </NewPostBtn>
-        <MyPosts
-          path="/profile/posts"
-          likePost={props.likePost}
-          url={props.url}
-          posts={props.posts}
-          setPosts={props.setPosts}
-        />
-      </ContentContainer>
+      <PageContainer>
+        <ContentContainer>
+          <NewPostBtn
+            onClick={() => {
+              props.history.push("/new_post");
+            }}
+          >
+            New Post
+          </NewPostBtn>
+          <MyPosts
+            path="/profile/posts"
+            likePost={props.likePost}
+            url={props.url}
+            posts={props.posts}
+            setPosts={props.setPosts}
+          />
+        </ContentContainer>
+      </PageContainer>
     );
   } else if (props.content === "Liked") {
     return (
-      <ContentContainer>
-        <MyPosts
-          path="/profile/liked"
-          likePost={props.likePost}
-          url={props.url}
-          posts={props.posts}
-          setPosts={props.setPosts}
-        />
-      </ContentContainer>
+      <PageContainer>
+        <ContentContainer>
+          <MyPosts
+            path="/profile/liked"
+            likePost={props.likePost}
+            url={props.url}
+            posts={props.posts}
+            setPosts={props.setPosts}
+          />
+        </ContentContainer>
+      </PageContainer>
     );
   } else if (props.content === "Info") {
-    return <AccountInfo />;
+    return (
+      <PageContainer>
+        <AccountInfo user={props.user} url={props.url}/>
+      </PageContainer>
+    );
   }
 };
 
