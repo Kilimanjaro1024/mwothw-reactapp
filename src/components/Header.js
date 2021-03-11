@@ -39,7 +39,7 @@ const Hmbgr = styled.img`
 
 const Header = (props) => {
 
-  
+  console.log(props.user)
   console.log(props.setVisable)
   const setNav = () => {
     props.setVisable(!props.visable)
@@ -53,7 +53,7 @@ const Header = (props) => {
         onClick={() => props.history.push("/profile")}
       >
         <img src="https://i.imgur.com/INnsE9J.png" alt="profile" />
-        <h3>Username</h3>
+        <h3>{props.user.user.username.toUpperCase()}</h3>
       </ProfileBtn>
       <div className="hmbgr-div">
         <Hmbgr

@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Route, Switch } from "react-router-dom";
-import { BrowserRouter as Router } from "react-router-dom";
+// import { BrowserRouter as Router } from "react-router-dom";
 import axios from "axios";
-import logo from "./logo.svg";
+// import logo from "./logo.svg";
 import "./App.css";
 import React from "react"
 
@@ -16,11 +16,11 @@ function App() {
   const url = "http://localhost:3000";
   const [posts, setPosts] = useState([])
   const [content, setContent] = React.useState("Posts")
-  const [user, setUser] = React.useState([])
+  const [user, setUser] = React.useState()
 
   const getUser = () => {
     axios.get(
-      url + "/users", {
+      url + "/users/" ,{
         headers: {
           authorization: "bearer " + sessionStorage.getItem("token"),
         },
@@ -61,7 +61,7 @@ function App() {
         <Route
           exact
           path="/"
-          render={(rp) => <LoginPage {...rp} url={url} />}
+          render={(rp) => <LoginPage {...rp} url={url} setUser={setUser} user={user}/>}
         />
         <Route
           exact
@@ -71,7 +71,7 @@ function App() {
         <Route
           exact
           path="/homepage"
-          render={(rp) => <Homepage {...rp} url={url} likePost={likePost} posts={posts} setPosts={setPosts} getUser={getUser}/>}
+          render={(rp) => <Homepage {...rp} url={url} likePost={likePost} posts={posts} setPosts={setPosts} user={user}/>}
         />
         <Route
           exact

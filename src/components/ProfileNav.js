@@ -1,6 +1,6 @@
-import React from 'react'
-import '../Header.css'
-import styled, { keyframes } from "styled-components";
+import React from "react";
+import "../Header.css";
+import styled from "styled-components";
 
 const NavBtns = styled.div`
     background-color: #418BC8;
@@ -14,33 +14,29 @@ const NavBtn = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid #13293D;
-  
+  border: 2px solid #13293d;
   width: 100%;
   font-family: "RocknRoll One", sans-serif;
   font-weight: 700;
   font-size: 25px;
-  color: #13293D;
+  color: #13293d;
   :hover {
-    background-color: #B1C5D3;
+    background-color: #b1c5d3;
   }
 
   @media (min-width: 768px) {
-    height: 20vh;
+    height: 10vh;
   }
-
 `;
 
 const ProfileNav = (props) => {
+  return (
+    <NavBtns>
+      <NavBtn onClick={() => props.setContent("Posts")}>My Posts</NavBtn>
+      <NavBtn onClick={() => props.setContent("Liked")}>Liked Posts</NavBtn>
+      <NavBtn onClick={() => props.setContent("Info")}>Account Info</NavBtn>
+    </NavBtns>
+  );
+};
 
-    return (
-        <NavBtns>
-               <NavBtn onClick={() => props.setContent("Posts")}>My Posts</NavBtn>
-               <NavBtn onClick={() => props.setContent("Liked")}>Liked Posts</NavBtn>
-               <NavBtn onClick={() => props.setContent("Info")}>Account Info</NavBtn>
-        </NavBtns>
-    )
-
-}
-
-export default ProfileNav
+export default ProfileNav;

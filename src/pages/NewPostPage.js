@@ -1,13 +1,19 @@
 import React from "react";
 import NewPost from "../components/NewPost";
 import ProfileHeader from "../components/ProfileHeader"
+import styled from "styled-components";
+
+const ContentContainer = styled.div`
+  background-color: #bfdaee;
+  height: 100vh;
+`;
 
 const NewPostPage = (props) => {
   return (
-    <div>
+    <ContentContainer>
       <ProfileHeader history={props.history}/>
       <NewPost history={props.history} url={props.url} />
-    </div>
+    </ContentContainer>
   );
 };
 

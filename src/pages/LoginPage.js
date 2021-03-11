@@ -1,14 +1,18 @@
 import React from "react"
-
 import Login from "../components/Login"
-import ProfileNav from "../components/ProfileNav"
+import styled from "styled-components";
+
+const ContentContainer = styled.div`
+  background-color: #bfdaee;
+  height: 100vh;
+`;
 
 const LoginPage = props => {
     console.log(props.history)
     return (
-        <div>          
-            <Login url={props.url} history={props.history}/>
-        </div>
+        <ContentContainer>          
+            <Login url={props.url} history={props.history} setUser={props.setUser} user={props.user}/>
+        </ContentContainer>
     )
 }
 

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Route, Switch, Link, Router } from "react-router-dom";
+// import { Route, Switch, Link, Router } from "react-router-dom";
 import styled from "styled-components";
 
 import SearchNav from "../components/SearchNav";
@@ -38,10 +38,11 @@ const ContentContainer = styled.div`
 
 const Homepage = (props) => {
   const [visible, setVisable] = useState(false);
+  console.log(props.user)
   // React.useEffect(() => {
   //   props.getUser()
   // }, [])
-
+  console.log(props.user)
   if (visible) {
     return (
       <PageContainer>
@@ -49,6 +50,7 @@ const Homepage = (props) => {
           history={props.history}
           setVisable={setVisable}
           visable={visible}
+          user={props.user}
         />
         <SearchNav url={props.url} />
         <ContentContainer>
@@ -75,6 +77,7 @@ const Homepage = (props) => {
           history={props.history}
           setVisable={setVisable}
           visable={visible}
+          user={props.user}
         />
         <ContentContainer>
           <NewPostBtn

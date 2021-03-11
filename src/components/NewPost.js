@@ -3,20 +3,47 @@ import "../Header.css";
 import axios from "axios";
 import styled from "styled-components";
 
-const PostForm = styled.form``;
+const PostForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  text-align: left;
+  textarea {
+    resize: none;
+    width: 99%;
+  }
+  .submit {
+    display: flex;
+    flex-direction: flex-start;
+    margin-right: auto;
+  }
+`;
+const PageContainer = styled.div`
+  background-color: #bfdaee;
+`;
 
 const ContentContainer = styled.div`
+  border: 2px solid #13293d;
   display: flex;
   text-align: left;
   margin: auto;
-  width: 50vw;
+  flex-direction: column;
+  font-family: "RocknRoll One", sans-serif;
+  background-color: #418bc8;
+  box-shadow: 0px 0px 15px #05090f;
+  color: #13293d;
+  @media (min-width: 768px) {
+    
+    margin: 100px auto;
+    width: 50vw;
+  }
 `;
 const TitleTopicTags = styled.div`
   display: flex;
   text-align: left;
   align-items: center;
+  flex-flow: wrap;
   p {
-    
     margin: 0;
   }
 `;
@@ -67,45 +94,49 @@ const NewPost = (props) => {
     createPost(formData); // update passed down state from App.js with the form data
   };
   return (
-    <ContentContainer>
-      <PostForm onSubmit={handleSubmit}>
-        <TitleTopicTags>
-          <p>Title</p>
-          <input
-            type="text"
-            name="title"
-            value={formData.title}
-            onChange={handleChange}
-          />
-          <p>Topic</p>
-          <select name="topic" value={formData.topic} onChange={handleChange}>
-            <option>Other</option>
-            <option>Gaming</option>
-            <option>Sports</option>
-            <option>Reading</option>
-            <option>Cleaning</option>
-          </select>
-        </TitleTopicTags>
-        {/* <h1>Tags</h1>
+    <PageContainer>
+      <ContentContainer>
+        <PostForm onSubmit={handleSubmit}>
+          <TitleTopicTags>
+            <p>Title</p>
+            <input
+              type="text"
+              name="title"
+              value={formData.title}
+              onChange={handleChange}
+            />
+          </TitleTopicTags>
+          <TitleTopicTags>
+            <p>Topic</p>
+            <select name="topic" value={formData.topic} onChange={handleChange}>
+              <option>Other</option>
+              <option>Gaming</option>
+              <option>Sports</option>
+              <option>Reading</option>
+              <option>Cleaning</option>
+            </select>
+          </TitleTopicTags>
+          {/* <h1>Tags</h1>
         <input
           type="text"
           name="tags"
           value={formData.content}
           onChange={handleChange}
         /> */}
-        <h1>Content</h1>
-        <textarea
-          cols="120"
-          rows="20"
-          type="text"
-          name="content"
-          value={formData.content}
-          onChange={handleChange}
-        />
-        <br />
-        <input type="submit" value="submit" />
-      </PostForm>
-    </ContentContainer>
+          <h1>Content</h1>
+          <textarea
+            cols="120"
+            rows="15"
+            type="text"
+            name="content"
+            value={formData.content}
+            onChange={handleChange}
+          />
+          <br />
+          <input className="submit" type="submit" value="submit" />
+        </PostForm>
+      </ContentContainer>
+    </PageContainer>
   );
 };
 

@@ -1,89 +1,121 @@
-import React from "react"
-import axios from "axios"
-import { Route, Switch, Link, Router } from "react-router-dom";
+import React from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
 import styled from "styled-components";
 
+const PageContainer = styled.div`
+  background-color: #bfdaee;
+`;
+
 const Container = styled.div`
-  background-color: blue;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  background-color: #2a628f;
+  // display: flex;
+  // // justify-content: space-between;
+  // align-items: center;
+  padding: 10px 5px;
+`;
+
+const LoginDiv = styled.div`
+  display: inline-block;
+  border: 3px solid #2a628f;
+  margin:  80px 0 ;
+  padding: 20px 40px;
+  text-align:left;
+  font-family: 'RocknRoll One', sans-serif;
+  background-color: #418bc8;
+  box-shadow: 0px 0px 15px #05090F;
+  color: #0F1C2E;
+  h1 {
+    margin:0;
+  }
+  h2 {
+    margin: 10px 0;
+  }
 `;
 
 
-const Login = props => {
-  console.log(props.history)
-  const handleLogin = loginInfo => {
+
+// const LoginForm = styled.form`
+//   .pw {
+//     -webkit-text-security: disc;
+//   }
+// `;
+
+const Login = (props) => {
+  console.log(props.history);
+  const handleLogin = (loginInfo) => {
     axios
       .post(props.url + "/login", {
         username: loginInfo.username[0],
         password: loginInfo.password[0],
       })
-      .then(data => {
-        console.log(data)
-        sessionStorage.setItem("token", data.data.token)
+      .then((data) => {
+        console.log(data.data)
+        props.setUser(data.data)
+        sessionStorage.setItem("token", data.data.token);
       })
       .then(() => {
-        console.log(sessionStorage.getItem("token"))
+        console.log(sessionStorage.getItem("token"));
       })
       .then(() => {
-        props.history.push('/homepage')
+        console.log(props.user)
+        props.history.push("/homepage");
       })
-      .catch(error => {
-        console.log(error.response)
-      })
-  }
+      .catch((error) => {
+        console.log(error.response);
+      });
+  };
 
   const emptyLoginFormData = {
     username: "",
     password: "",
-  }
+  };
 
-  const [formData, setFormData] = React.useState(emptyLoginFormData)
+  const [formData, setFormData] = React.useState(emptyLoginFormData);
 
-  const handleChange = event => {
+  const handleChange = (event) => {
     setFormData({
       ...formData,
       [event.target.name]: [event.target.value],
-    })
-  }
+    });
+  };
 
-  const handleSubmit = event => {
-    event.preventDefault() // Prevent Form from Refreshing
-    console.log(formData)
-    handleLogin(formData) // update passed down state from App.js with the form data
-  }
+  const handleSubmit = (event) => {
+    event.preventDefault(); // Prevent Form from Refreshing
+    console.log(formData);
+    handleLogin(formData); // update passed down state from App.js with the form data
+  };
 
   return (
-    <div>
+    <PageContainer>
       <Container>
-        <h3 onClick={() => props.history.push("/")}>Back</h3>
+        <h1>Title</h1>
       </Container>
-    <div>
-      <h1>Login</h1>
-      <h2>Username:</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="username"
-          value={formData.username}
-          onChange={handleChange}
-        />
-        <h2>Password:</h2>
-        <input
-          type="text"
-          name="password"
-          value={formData.password}
-          onChange={handleChange}
-        />
-        <br/>
-        <input type="submit" value="submit" />
-      </form>
-       <Link to="/register/">Register</Link>
-    </div>
-    </div>
-  )
-}
+      <LoginDiv>
+        <h1>Login</h1>
+        <h2>Username:</h2>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            name="username"
+            value={formData.username}
+            onChange={handleChange}
+          />
+          <h2>Password:</h2>
+          <input
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+          />
+          <br />
+          <input style={{margin: "10px 0 5px"}}type="submit" value="submit" />
+        </form>
+        <Link to="/register/">Register</Link>
+      </LoginDiv>
+    </PageContainer>
+  );
+};
 
-export default Login
+export default Login;

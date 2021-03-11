@@ -12,7 +12,7 @@ const textGrowAnimation = keyframes`
   100% {height: 30px;}
 `;
 
-const btnAnimation = growAnimation;
+
 const SearchBtns = styled.div`
     background-color: #418BC8;
     display: flex;
@@ -42,11 +42,11 @@ const SearchNav = (props) => {
     tag: "",
   };
 
-  const emptyUserSeachFrom = {
-    username: "",
-  };
+  // const emptyUserSeachFrom = {
+  //   username: "",
+  // };
   const [formData, setFormData] = React.useState(emptyPostSeachFrom);
-  const [searchedUser, setSearchedUser] = React.useState(emptyUserSeachFrom);
+  // const [searchedUser, setSearchedUser] = React.useState(emptyUserSeachFrom);
   const [topic, setTopic] = React.useState();
 
   const handleTopicChange = (event) => {
@@ -59,21 +59,21 @@ const SearchNav = (props) => {
     });
   };
 
-  const handleUserChange = (event) => {
-    setSearchedUser({
-      ...searchedUser,
-      [event.target.name]: [event.target.value],
-    });
-  };
+  // const handleUserChange = (event) => {
+  //   setSearchedUser({
+  //     ...searchedUser,
+  //     [event.target.name]: [event.target.value],
+  //   });
+  // };
 
-  const handleUserSubmit = (event) => {
-    event.preventDefault();
-  };
+  // const handleUserSubmit = (event) => {
+  //   event.preventDefault();
+  // };
 
-  const Func = (event) => {
-    event.preventDefault();
-    console.log("hello");
-  };
+  // const Func = (event) => {
+  //   event.preventDefault();
+  //   console.log("hello");
+  // };
 
   const getUsersPosts = (event) => {
     event.preventDefault();
@@ -133,58 +133,58 @@ const SearchNav = (props) => {
       </div>
     </div>
   );
-  if (search === "") {
-    return (
-      <SearchBtns>
-        <div style={{ width: "50vw" }} onClick={() => setSearch("Post")}>
-          <h1>Posts</h1>
-        </div>
-        <div style={{ width: "50vw" }} onClick={() => setSearch("User")}>
-          <h1>Users</h1>
-        </div>
-      </SearchBtns>
-    );
-  } else if (search === "Post") {
-    return (
-      <div>
-        <SearchBtns>
-          <div style={{ width: "50vw" }} onClick={() => setSearch("Post")}>
-            <h1>Posts</h1>
-          </div>
-          <div style={{ width: "50vw" }} onClick={() => setSearch("User")}>
-            <h1>Users</h1>
-          </div>
-        </SearchBtns>
-        <SearchForm onSubmit={() => {}}>
-          <select name="topic" onChange={handleTopicChange}>
-            <option value=""></option>
-            <option value="Topic 1">Topic 1</option>
-            <option value="Topic 2">Topic 2</option>
-            <option value="Topic 3">Topic 3</option>
-          </select>
-          <input type="text" name="tag" onChange={handleChange} />
-          <input type="submit" value="submit" />
-        </SearchForm>
-      </div>
-    );
-  } else if (search === "User") {
-    return (
-      <div>
-        <SearchBtns>
-          <div style={{ width: "50vw" }} onClick={() => setSearch("Post")}>
-            <h1>Posts</h1>
-          </div>
-          <div style={{ width: "50vw" }} onClick={() => setSearch("User")}>
-            <h1>Users</h1>
-          </div>
-        </SearchBtns>
-        <SearchForm onSubmit={getUsersPosts}>
-          <input type="text" name="username" onChange={handleChange} />
-          <input type="submit" value="submit" />
-        </SearchForm>
-      </div>
-    );
-  }
+  // if (search === "") {
+  //   return (
+  //     <SearchBtns>
+  //       <div style={{ width: "50vw" }} onClick={() => setSearch("Post")}>
+  //         <h1>Posts</h1>
+  //       </div>
+  //       <div style={{ width: "50vw" }} onClick={() => setSearch("User")}>
+  //         <h1>Users</h1>
+  //       </div>
+  //     </SearchBtns>
+  //   );
+  // } else if (search === "Post") {
+  //   return (
+  //     <div>
+  //       <SearchBtns>
+  //         <div style={{ width: "50vw" }} onClick={() => setSearch("Post")}>
+  //           <h1>Posts</h1>
+  //         </div>
+  //         <div style={{ width: "50vw" }} onClick={() => setSearch("User")}>
+  //           <h1>Users</h1>
+  //         </div>
+  //       </SearchBtns>
+  //       <SearchForm onSubmit={() => {}}>
+  //         <select name="topic" onChange={handleTopicChange}>
+  //           <option value=""></option>
+  //           <option value="Topic 1">Topic 1</option>
+  //           <option value="Topic 2">Topic 2</option>
+  //           <option value="Topic 3">Topic 3</option>
+  //         </select>
+  //         <input type="text" name="tag" onChange={handleChange} />
+  //         <input type="submit" value="submit" />
+  //       </SearchForm>
+  //     </div>
+  //   );
+  // } else if (search === "User") {
+  //   return (
+  //     <div>
+  //       <SearchBtns>
+  //         <div style={{ width: "50vw" }} onClick={() => setSearch("Post")}>
+  //           <h1>Posts</h1>
+  //         </div>
+  //         <div style={{ width: "50vw" }} onClick={() => setSearch("User")}>
+  //           <h1>Users</h1>
+  //         </div>
+  //       </SearchBtns>
+  //       <SearchForm onSubmit={getUsersPosts}>
+  //         <input type="text" name="username" onChange={handleChange} />
+  //         <input type="submit" value="submit" />
+  //       </SearchForm>
+  //     </div>
+  //   );
+  // }
 };
 
 export default SearchNav;

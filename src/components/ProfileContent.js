@@ -1,8 +1,8 @@
 import React from "react";
-import Profile from "./Profile";
+// import Profile from "./Profile";
 import MyPosts from "./MyPosts";
 import AccountInfo from "./AccountInfo";
-import { Route, Switch, Link, Router } from "react-router-dom";
+// import { Route, Switch, Link, Router } from "react-router-dom";
 import styled from "styled-components";
 
 const NewPostBtn = styled.div`
@@ -10,15 +10,15 @@ const NewPostBtn = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid #13293D;
+  border: 2px solid #13293d;
   height: 15vh;
   margin: 10px 0;
   font-family: "RocknRoll One", sans-serif;
   font-weight: 700;
   font-size: 25px;
-  color: #13293D;
+  color: #13293d;
   :hover {
-    background-color: #B1C5D3;
+    background-color: #b1c5d3;
   }
 `;
 
