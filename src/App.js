@@ -13,7 +13,7 @@ import ProfilePage from "./pages/ProfilePage";
 import NewPostPage from "./pages/NewPostPage";
 
 function App() {
-  const url = "https://mwothw-final-backend.herokuapp.com";
+  const url = "https://cors-anywhere.herokuapp.com/https://mwothw-backend.herokuapp.com";
   const [posts, setPosts] = useState([]);
   const [content, setContent] = React.useState("Posts");
   const [user, setUser] = React.useState();
