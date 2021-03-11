@@ -5,7 +5,6 @@ import styled from "styled-components";
 const AccountDiv = styled.div`
   display: inline-block;
   margin: 40px 0;
-  padding: 10px;
   text-align: left;
   font-family: "RocknRoll One", sans-serif;
   
@@ -20,13 +19,14 @@ const AccountDiv = styled.div`
     border: 3px solid #2a628f;
     background-color: #418bc8;
     box-shadow: 0px 0px 15px #05090f;
-    margin: 100px auto;
+    margin: 80px auto;
+    padding: 10px;
     width: 40vw;
   }
 `;
 
 const PictureDiv = styled.div`
-padding: 10px;
+  
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -36,10 +36,11 @@ padding: 10px;
   }
 
   @media (min-width: 768px) {
-    margin: 100px 0;
+    
+    margin: 50px 0;
     width: 40vw;
     img {
-      max-height:300px
+      max-width: 300px;
       width: 300px;
     }
   }

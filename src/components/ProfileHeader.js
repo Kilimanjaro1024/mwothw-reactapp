@@ -27,6 +27,15 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 20px 5px;
+  font-family: 'RocknRoll One', sans-serif;
+  color: #0E1F2F;
+
+  h3 {
+    :hover{
+      color: #B1C5D3;
+      text-shadow: 5px 5px 5px #0E1F2F; 
+    }
+  }
 `;
 
 const ProfileHeader = props => {
