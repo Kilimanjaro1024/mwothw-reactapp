@@ -8,7 +8,6 @@ import RecentPosts from "../components/RecentPosts";
 
 const PageContainer = styled.div`
   background-color: #bfdaee;
-  height: 100vh;
 `;
 
 const NewPostBtn = styled.div`
@@ -32,6 +31,7 @@ const ContentContainer = styled.div`
   margin: auto;
   text-align: center;
   // background-color: white;
+  background-color: #bfdaee;
   @media (min-width: 768px) {
     width: 50vw;
   }
